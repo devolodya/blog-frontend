@@ -1,25 +1,36 @@
-import React from "react";
+import { useState } from "react";
 import { styled } from "styled-components";
 import Button from "../assets/kit/Button";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  const navigate = useNavigate();
   return (
     <Container>
       <Content>
-        LOGO
-        <ButtonsContainer>
-          <Button
-            appearance="primary"
-            text="Login"
-            onClick={() => console.log(1)}
-          />
+        <div style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
+          LOGO
+        </div>
+        {(!isAuth && (
+          <ButtonsContainer>
+            <Button
+              appearance="primary"
+              text="Login"
+              onClick={() => navigate("/login")}
+            />
 
-          <Button
-            appearance="secondary"
-            text="Sign Up"
-            onClick={() => console.log(1)}
-          />
-        </ButtonsContainer>
+            <Button
+              appearance="secondary"
+              text="Sign Up"
+              onClick={() => navigate("/signup")}
+            />
+          </ButtonsContainer>
+        )) || (
+          <AuthorizedInfo>
+            <Avatar />
+          </AuthorizedInfo>
+        )}
       </Content>
     </Container>
   );
@@ -47,4 +58,18 @@ const Content = styled.div({
 const ButtonsContainer = styled.div({
   display: "flex",
   gap: "10px",
+});
+
+const AuthorizedInfo = styled.div({
+  display: "flex",
+  gap: "10px",
+  height: "100%",
+  justifyContent: "center",
+  alignItems: "center",
+});
+const Avatar = styled.div({
+  height: "30px",
+  width: "30px",
+  background: "blue",
+  borderRadius: "999px",
 });

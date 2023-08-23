@@ -27,5 +27,6 @@ const StyledButton = styled.button<{ appearance: "primary" | "secondary" }>(
     borderRadius: "4px",
     color: appearance === "primary" ? "white" : "black",
     fontFamily: "'Montserrat', sans-serif",
+    cursor: "pointer",
   })
 );
