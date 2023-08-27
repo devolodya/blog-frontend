@@ -3,8 +3,9 @@ import { styled } from "styled-components";
 
 interface IButton {
   appearance: "primary" | "secondary";
-  onClick: () => void;
+  onClick?: () => void;
   text: string;
+  type?: string;
 }
 
 const Button: FC<IButton> = ({ appearance, onClick, text }) => {

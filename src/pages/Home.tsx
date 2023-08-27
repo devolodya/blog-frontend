@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import { styled } from "styled-components";
-import PostList from "../components/PostList";
-import { getPosts } from "../utils/getPosts";
+import { PostList, TextEditor } from "../components";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "../redux/slices/posts";
 
 const Home = () => {
-  const [data, setData]: any = useState([]);
+  const dispatch: any = useDispatch();
+  const { posts, tags }: any = useSelector<any>((state) => state.posts);
   useEffect(() => {
-    async function getPosts() {
-      try {
-        const response = await axios.get("http://localhost:4444/posts");
-        console.log(response);
-        if (response.data) setData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getPosts();
+    dispatch(fetchPosts());
   }, []);
-  console.log(data);
   return (
-    (data && data.length > 0 && (
+    (posts.items && posts.items.length > 0 && (
       <Container>
         <PostContainer>
-          <PostList posts={data} />
+          <TextEditor />
+          <PostList posts={posts.items} />
         </PostContainer>
         <TagsContainer>Tags (in progress)</TagsContainer>
       </Container>

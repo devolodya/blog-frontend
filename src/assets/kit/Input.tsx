@@ -1,12 +1,27 @@
 import { FC } from "react";
 import { styled } from "styled-components";
+import { InputProps } from "../../types";
 
-interface IInput {
-  placeholder?: string;
-  onClick: () => void;
-}
-const Input: FC<IInput> = ({ placeholder, onClick }) => {
-  return <StyledInput placeholder={placeholder} onClick={onClick} />;
+const Input: FC<InputProps> = ({
+  type,
+  name,
+  placeholder,
+  value,
+  onChange,
+  disabled,
+  ref,
+}) => {
+  return (
+    <StyledInput
+      type={type}
+      name={name}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      disabled={disabled}
+      ref={ref}
+    />
+  );
 };
 
 export default Input;

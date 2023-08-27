@@ -1,18 +1,45 @@
-import React from "react";
+import { useForm, Controller } from "react-hook-form";
 import { styled } from "styled-components";
 import Button from "../assets/kit/Button";
 import Input from "../assets/kit/Input";
 
 const SignUp = () => {
+  const { control, handleSubmit } = useForm();
   return (
     <Container>
       <MainText>Sign Up to join our community!</MainText>
-      <Content>
-        <Input placeholder="Full name" onClick={() => console.log(1)} />
-        <Input placeholder="Email" onClick={() => console.log(1)} />
-        <Input placeholder="Username" onClick={() => console.log(1)} />
-        <Input placeholder="Password" onClick={() => console.log(1)} />
-        <Input placeholder="Confirm password" onClick={() => console.log(1)} />
+      <Content onSubmit={handleSubmit((data) => console.log(data))}>
+        <Controller
+          name="fullName"
+          control={control}
+          rules={{ required: true, minLength: 5 }}
+          render={({ field }) => <Input {...field} placeholder="Full name" />}
+        />
+        <Controller
+          name="email"
+          control={control}
+          rules={{ required: true, minLength: 5 }}
+          render={({ field }) => <Input {...field} placeholder="Email" />}
+        />
+        <Controller
+          name="username"
+          control={control}
+          rules={{ required: true, minLength: 5 }}
+          render={({ field }) => <Input {...field} placeholder="Username" />}
+        />
+        <Controller
+          name="password"
+          control={control}
+          rules={{ required: true, minLength: 5 }}
+          render={({ field }) => (
+            <Input {...field} placeholder="Password" type="password" />
+          )}
+        />
+        {/* <Input placeholder="Full name" />
+        <Input placeholder="Email" />
+        <Input placeholder="Username" />
+        <Input placeholder="Password" />
+        <Input placeholder="Confirm password" /> */}
         <Button
           appearance="primary"
           text="Sign Up"
@@ -34,7 +61,7 @@ const Container = styled.div({
   flexDirection: "column",
   gap: "20px",
 });
-const Content = styled.div({
+const Content = styled.form({
   width: "30%",
   border: "1px solid gray",
   display: "flex",
