@@ -24,6 +24,7 @@ export default App;
 
 const Container = styled.div({
   width: "100%",
+
   minHeight: "100vh",
   backgroundColor: "black",
   display: "flex",
