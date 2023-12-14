@@ -7,7 +7,7 @@ const PostList = ({ posts }: any) => {
     posts && (
       <Container>
         {posts.map((post: any) => (
-          <Post post={post} key={post._id} />
+          <Post post={post} key={post.id} />
         ))}
       </Container>
     )

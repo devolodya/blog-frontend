@@ -4,7 +4,7 @@ import axios from "../../utils/axios";
 export const fetchPosts: any = createAsyncThunk(
   "posts/fetchPosts",
   async () => {
-    const { data }: any = await axios.get("/posts");
+    const { data }: any = await axios.get("/photos/?_limit=10");
     return data;
   }
 );
