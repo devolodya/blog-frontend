@@ -8,19 +8,13 @@ const Post = ({ post }: any) => {
         <HeaderContainer>
           <AuthorContainer style={{ display: "flex" }}>
             <Avatar />
-            <FullName>{post.user.fullName}</FullName>
-            {post.user.username && <NickName>@{post.user.username}</NickName>}
+            <FullName>{post.id}</FullName>
             <Date>• 21 Aug</Date>
           </AuthorContainer>
           <OptionsContainer>•••</OptionsContainer>
         </HeaderContainer>
-        <TextContainer>{post.text}</TextContainer>
-        {post.imageURL && <PhotoContainer src={post.imageURL} />}
-        {post.tags && post.tags.length > 0 && (
-          <Hashtags>
-            {"#" + post.tags.toString().split(",").join(" #")}
-          </Hashtags>
-        )}
+        <TextContainer>{post.title}</TextContainer>
+        {post.url && <PhotoContainer src={post.url} />}
       </Container>
     )) || <div>No data!</div>
   );

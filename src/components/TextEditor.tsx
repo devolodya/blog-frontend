@@ -26,6 +26,7 @@ const Container = styled.div({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  boxSizing: "border-box",
 });
 const Editor = styled.textarea({
   width: "90%",

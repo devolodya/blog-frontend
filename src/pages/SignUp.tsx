@@ -63,7 +63,6 @@ const Container = styled.div({
 });
 const Content = styled.form({
   width: "30%",
-  border: "1px solid gray",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-evenly",
