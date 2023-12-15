@@ -26,12 +26,14 @@ const Input: FC<InputProps> = ({
 
 export default Input;
 
-const StyledInput = styled.input({
+const StyledInput = styled.input(({ theme }) => ({
   width: "80%",
   height: "40px",
   background: "none",
-  border: "none",
-  borderBottom: "2px solid white",
+  border: `1px solid ${theme.colors.white}`,
   outline: "none",
-  color: "white",
-});
+  color: theme.colors.white,
+  paddingLeft: "5%",
+  boxSizing: "border-box",
+  borderRadius: "10px",
+}));

@@ -22,18 +22,15 @@ function App() {
 
 export default App;
 
-const Container = styled.div({
+const Container = styled.div(({ theme }) => ({
   width: "100%",
-
   minHeight: "100vh",
-  backgroundColor: "black",
+  backgroundColor: theme.colors.background,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-});
+}));
 const Content = styled.div({
   width: "80%",
-  borderRight: "1px solid gray",
-  borderLeft: "1px solid gray",
   minHeight: "100vh",
 });

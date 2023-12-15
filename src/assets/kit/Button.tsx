@@ -19,14 +19,20 @@ const Button: FC<IButton> = ({ appearance, onClick, text }) => {
 export default Button;
 
 const StyledButton = styled.button<{ appearance: "primary" | "secondary" }>(
-  ({ appearance }) => ({
+  ({ appearance, theme }) => ({
     width: "100px",
     height: "30px",
-    background: appearance === "primary" ? "#9e00c2" : "#FFFFFF",
+    background:
+      appearance === "primary"
+        ? theme.colors.mainButton
+        : theme.colors.secondaryButton,
     outline: "none",
     border: "none",
     borderRadius: "4px",
-    color: appearance === "primary" ? "white" : "black",
+    color:
+      appearance === "primary"
+        ? theme.colors.white
+        : theme.colors.secondaryButtonText,
     fontFamily: "'Montserrat', sans-serif",
     cursor: "pointer",
   })
